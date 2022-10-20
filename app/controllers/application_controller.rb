@@ -17,6 +17,8 @@ class ApplicationController < ActionController::Base
   end
 
   def calculate_root
+    @root_input = params.fetch("square_root").to_f
+    @root = @root_input**0.5
     render({ :template => "calculation_templates/root_results.html.erb"})
   end
 
@@ -31,11 +33,14 @@ class ApplicationController < ActionController::Base
   
 
   def blank_random_form
-  
+    
     render({ :template => "calculation_templates/random_form.html.erb"})
   end
 
   def calculate_random
+    @min = params.fetch("min").to_f
+    @max = params.fetch("max").to_f
+    @random = rand(@min..@max)
     render({ :template => "calculation_templates/random_results.html.erb"})
   end
   
