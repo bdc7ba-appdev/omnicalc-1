@@ -28,6 +28,15 @@ class ApplicationController < ActionController::Base
   end
 
   def calculate_payment
+    @input_apr = params.fetch("apr").to_f
+    @percent_apr = @input_apr/100
+    @monthly_rate = @percent_apr/12
+    @term = params.fetch("term").to_f
+    @months = @term*12
+    @principal = params.fetch("principal").to_f
+    @numerator = @monthly_rate*@principal
+    @denominator = (1 - (1+@monthly_rate)**-@months)
+    @monthly_payment = (@numerator/@denominator)
     render({ :template => "calculation_templates/payment_results.html.erb"})
   end
   

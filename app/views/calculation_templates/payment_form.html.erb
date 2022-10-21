@@ -1,7 +1,17 @@
-<form>
-  <label for = "">Enter a number</label>
+<form action="/payment/results"> <!--equivalent to href-->
   <div>
-    <input id="">
+    <label for = "apr_number">APR</label> 
+      <input id="apr_number" type= "text" placeholder="E.g. 5.42" name="apr">
   </div>
-  <button>Calculate Square</button>
-</form>
+
+  <div>
+    <label for = "term_number">Number of years</label> 
+    <input id="term_number" type= "text" placeholder="How many years to repay?" name="term">
+  </div>
+
+  <div>
+    <label for = "principal_number">Principal</label> 
+    <input id="principal_number" type= "text" placeholder="How much principal?" name="principal">
+  </div>
+  <button>Calculate monthly payment</button>
+</form >
